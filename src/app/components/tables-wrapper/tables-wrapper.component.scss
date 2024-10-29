@@ -1,0 +1,10 @@
+.tables-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+@media (max-width: 768px) {
+  .tables-wrapper {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

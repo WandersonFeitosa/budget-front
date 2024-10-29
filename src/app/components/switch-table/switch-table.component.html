@@ -1,0 +1,12 @@
+<form [formGroup]="tableForm" (ngSubmit)="switchTable()" class="switch-table-form">
+  <h1>Switch Table</h1>
+  <mat-form-field appearance="fill">
+    <mat-label>Table ID</mat-label>
+    <input matInput formControlName="tableId" required />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" 
+    [disabled]="!tableForm.valid || tableForm.value.tableId === lastTableId">
+    Switch Table
+  </button>
+</form>

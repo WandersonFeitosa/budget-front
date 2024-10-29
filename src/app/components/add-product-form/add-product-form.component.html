@@ -1,0 +1,50 @@
+<form
+  [formGroup]="productForm"
+  (ngSubmit)="addProduct()"
+  class="add-product-form"
+>
+  <h1>Add Product</h1>
+  <mat-form-field appearance="fill">
+    <mat-label>Product Name</mat-label>
+    <input matInput formControlName="productName" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Link</mat-label>
+    <input matInput formControlName="link" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Price</mat-label>
+    <input matInput formControlName="price" placeholder="Format: 123.45" appPriceFormat />
+  </mat-form-field>
+
+  <mat-checkbox [formControl]="useNewCategory">Use a new category</mat-checkbox>
+
+  <mat-form-field appearance="fill" *ngIf="!useNewCategory.value">
+    <mat-label>Category</mat-label>
+    <mat-select formControlName="category">
+      <mat-option *ngFor="let category of categories" [value]="category.id">{{
+        category.name
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" *ngIf="useNewCategory.value">
+    <mat-label>Add new category</mat-label>
+    <input
+      matInput
+      placeholder="Type new category"
+      [formControl]="customCategory"
+    />
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="!isFormValid()"
+  >
+    Add Product
+  </button>
+</form>

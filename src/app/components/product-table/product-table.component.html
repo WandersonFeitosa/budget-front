@@ -1,0 +1,64 @@
+<div class="product-table">
+  <h2 class="table-title">
+    {{ tableTitle }}
+    <a mat-icon-button (click)="removeProductCategory(tableTitle)">
+      <mat-icon>delete</mat-icon>
+    </a>
+  </h2>
+
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef class="column-name">
+        Name
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="column-name">
+        {{ element.name }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="link">
+      <mat-header-cell *matHeaderCellDef class="column-link">
+        Link
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="column-link">
+        <a mat-icon-button (click)="copyLink(element.link)">
+          <mat-icon>link</mat-icon>
+        </a>
+        <a mat-icon-button (click)="navigateToLink(element.link)">
+          <mat-icon>open_in_new</mat-icon>
+        </a>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef class="column-price">
+        Price
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="column-price">
+        {{ element.price }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="remove">
+      <mat-header-cell *matHeaderCellDef> Remove </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <a mat-icon-button (click)="removeProduct(element)">
+          <mat-icon>delete</mat-icon>
+        </a>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="selected">
+      <mat-header-cell *matHeaderCellDef> Selected </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-checkbox
+          [(ngModel)]="element.selected"
+          (change)="toggleProductSelection(element)"
+        ></mat-checkbox>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+</div>

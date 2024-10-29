@@ -1,0 +1,23 @@
+@function rem($value) {
+  @return calc($value / 16) * 1rem;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+button {
+  margin-top: 20px;
+}
+
+.add-product-form {
+  max-width: 100%;
+}
+h1 {
+  text-align: center;
+}
+.mdc-button {
+  margin: 15px auto;
+  display: block;
+}
