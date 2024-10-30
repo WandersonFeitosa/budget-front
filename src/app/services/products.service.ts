@@ -20,7 +20,7 @@ export class ProductsService {
 
   constructor() {
     this.clientSocket = SocketIoClient.connect(
-      'https://34.125.231.131:3005'
+      'https://api.akavan.com.br:3005'
     );
     const lastTableId = localStorage.getItem('lastTableId');
     if (lastTableId) {
